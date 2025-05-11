@@ -3,7 +3,7 @@ services:
     name: multilingual-voice-assistant
     env: python  # Specifies Python backend
     buildCommand: pip install -r requirements.txt  # Install dependencies
-    startCommand: python run app.py  # Start the Flask app
+    startCommand: python app.py  # Start the Flask app
     envVars:
       - key: FLASK_ENV
         value: production

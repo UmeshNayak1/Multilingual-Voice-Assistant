@@ -15,9 +15,15 @@ function App() {
     }
   }, []);
 
+  // Define the API_URL based on the environment (local or production)
+  const API_URL =
+    window.location.hostname === 'localhost'
+      ? 'http://localhost:5000' // Local backend URL
+      : 'https://your-backend.onrender.com'; // Replace with your actual Render backend URL
+
   const handleTranslate = async (inputText = text) => {
     try {
-      const response = await fetch('/translate', {
+      const response = await fetch(`${API_URL}/translate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: inputText, dest: language }),
@@ -34,7 +40,7 @@ function App() {
   const handleVoiceInput = () => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
-      alert("Speech Recognition not supported in this browser.");
+      alert('Speech Recognition not supported in this browser.');
       return;
     }
 
@@ -50,8 +56,8 @@ function App() {
     };
 
     recognition.onerror = (event) => {
-      console.error("Speech recognition error:", event.error);
-      alert("Error during voice input. Please try again.");
+      console.error('Speech recognition error:', event.error);
+      alert('Error during voice input. Please try again.');
     };
   };
 
@@ -81,26 +87,29 @@ function App() {
   };
 
   return (
-
-    <div className={`App ${isDarkMode ? 'dark' : 'light'}`}>       
-      <button onClick={toggleTheme} style={{
-    width: '48px',
-    height: '48px',
-    borderRadius: '50%',
-    backgroundColor: '#1a73e8',
-    color: 'white',
-    border: 'none',
-    fontSize: '1.5rem',
-    cursor: 'pointer',
-    boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    transition: 'background-color 0.3s ease, transform 0.1s ease'
-  }}>
-        {isDarkMode ? '🌒' : '🌒'}
+    <div className={`App ${isDarkMode ? 'dark' : 'light'}`}>
+      <button
+        onClick={toggleTheme}
+        style={{
+          width: '48px',
+          height: '48px',
+          borderRadius: '50%',
+          backgroundColor: '#1a73e8',
+          color: 'white',
+          border: 'none',
+          fontSize: '1.5rem',
+          cursor: 'pointer',
+          boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transition: 'background-color 0.3s ease, transform 0.1s ease',
+        }}
+      >
+        {isDarkMode ? '🌒' : '🌞'}
       </button>
-      <h1>🎙️ Multilingual Voice Assistant</h1> 
+
+      <h1>🎙️ Multilingual Voice Assistant</h1>
 
       <textarea
         rows="4"
@@ -144,7 +153,6 @@ function App() {
           <button onClick={() => copyToClipboard(translatedText)}>📋 Copy Translation</button>
         </>
       )}
-
     </div>
   );
 }

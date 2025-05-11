@@ -21,7 +21,7 @@ A powerful multilingual voice assistant web application built using **React**, *
 ### Backend:
 - Python (Flask)
 - Flask-CORS
-- DeepL / Google Translate API (optional)
+
 
 ## 📦 Installation
 

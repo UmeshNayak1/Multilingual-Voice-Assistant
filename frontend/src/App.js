@@ -16,11 +16,11 @@ function App() {
   }, []);
 
   // Define the API_URL based on the environment (local or production)
-  const API_URL = 'https://multilingual-voice-assistant-7q1s.onrender.com';
+  // const API_URL = 'https://multilingual-voice-assistant-7q1s.onrender.com';
 
   const handleTranslate = async (inputText = text) => {
     try {
-      const response = await fetch(`${API_URL}/translate`, {
+      const response = await fetch(`https://multilingual-voice-assistant-7q1s.onrender.com/translate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: inputText, dest: language }),

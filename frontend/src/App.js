@@ -16,7 +16,7 @@ function App() {
   }, []);
 
   // Define the API_URL based on the environment (local or production)
-  const API_URL = 'https://multilingual-voice-assistant-2ano.onrender.com';
+  const API_URL = 'https://multilingual-voice-assistant-7q1s.onrender.com';
 
   const handleTranslate = async (inputText = text) => {
     try {

@@ -1,0 +1,199 @@
+/* App.css */
+/* Light mode styles */
+.App.light {
+  background-color: #fff;
+  color: #000;
+}
+
+.App.light button {
+  background-color: #1a73e8;;
+  color:#fff;
+}
+
+.App.light textarea {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Dark mode styles */
+.App.dark {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+.App.dark button {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+.App.dark textarea {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fa;
+  color: #333;
+}
+
+.App {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #1a73e8;
+}
+
+textarea {
+  width: 90%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: none;
+  margin-bottom: 20px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+button {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin: 5px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #155cb0;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+select {
+  padding: 10px 16px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+}
+
+p {
+  font-size: 1.1rem;
+  background-color: #f1f3f4;
+  padding: 12px;
+  border-radius: 8px;
+  margin: 20px auto;
+  width: 90%;
+  word-wrap: break-word;
+}
+
+hr {
+  margin: 30px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .App {
+    width: 90%;
+    padding: 20px;
+  }
+
+  textarea {
+    width: 100%;
+  }
+
+  button, select {
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  p {
+    width: 100%;
+  }
+}
+
+label {
+  font-weight: 600;
+  margin-right: 10px;
+  font-size: 2rem;
+  color: #1a73e8; /* Rich green tone */
+  background: linear-gradient(90deg, #0453f0, #1a73e8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+select {
+  padding: 10px 16px;
+  border: 2px solid #1a73e8;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+select:hover {
+  border-color: #1a73e8;
+  background-color: #e8f5e9;
+}
+
+select:focus {
+  outline: none;
+  border-color:  #1a73e8;
+  box-shadow: 0 0 5px rgba(46, 125, 50, 0.6);
+}
+
+
+/* Default Textarea Style */
+textarea {
+  border: 2px solid #4CAF50; /* Initial border color */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  resize: vertical; /* Allow vertical resizing only */
+  transition: border-color 0.3s ease-in-out; /* Smooth transition on hover/focus */
+}
+
+/* Hover Effect */
+textarea:hover {
+  border-color: #45a049; /* Slightly darker border color on hover */
+}
+
+/* Focus Effect */
+textarea:focus {
+  border-color: #2196F3; /* Blue border when focused */
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 5px rgba(33, 150, 243, 0.5); /* Soft blue shadow */
+}
+
+/* Read-Only Textarea (for translated text) */
+textarea[readonly] {
+  background-color: #f9f9f9; /* Lighter background for read-only textarea */
+  color: #333; /* Dark text color */
+}
+
+

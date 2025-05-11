@@ -8,7 +8,7 @@ app = Flask(__name__)
 # Only allow your Netlify domain (replace with your actual Netlify URL)
 CORS(app, resources={
     r"/translate": {
-        "origins": ["https://multilingualvoiceassistant.netlify.app/"]
+        "origins": ["https://68204a75ff7cb3d2d57841de--multilingualvoiceassistant.netlify.app/"]
     }
 }, supports_credentials=True)
 

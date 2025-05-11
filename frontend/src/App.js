@@ -19,7 +19,7 @@ function App() {
   const API_URL =
     window.location.hostname === 'localhost'
       ? 'http://localhost:5000' // Local backend URL
-      : 'https://your-backend.onrender.com'; // Replace with your actual Render backend URL
+      : 'https://multilingual-voice-assistant-qaog.onrender.com'; // Replace with your actual Render backend URL
 
   const handleTranslate = async (inputText = text) => {
     try {

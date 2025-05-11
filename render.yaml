@@ -1,11 +1,10 @@
 services:
   - type: web
     name: multilingual-voice-assistant
-    env: python  # Specifies Python backend
-    buildCommand: pip install -r requirements.txt  # Install dependencies
-    startCommand: gunicorn app:app  # Start the Flask app
+    runtime: python  # Preferred over 'env' for clarity
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
     envVars:
       - key: FLASK_ENV
         value: production
-    regions:
-      - oregon  # Define the deployment region
+    region: oregon  # Use 'region', not 'regions' unless you specify multiple

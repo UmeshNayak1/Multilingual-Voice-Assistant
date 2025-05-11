@@ -23,11 +23,3 @@ A powerful multilingual voice assistant web application built using **React**, *
 - Flask-CORS
 
 
-## 📦 Installation
-
-### Frontend (React)
-
-```bash
-cd client
-npm install
-npm start

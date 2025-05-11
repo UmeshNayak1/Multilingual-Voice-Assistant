@@ -16,10 +16,7 @@ function App() {
   }, []);
 
   // Define the API_URL based on the environment (local or production)
-  const API_URL =
-    window.location.hostname === 'localhost'
-      ? 'http://localhost:5000' // Local backend URL
-      : 'https://multilingual-voice-assistant-2ano.onrender.com'; // Replace with your actual Render backend URL
+  const API_URL = 'https://multilingual-voice-assistant-2ano.onrender.com';
 
   const handleTranslate = async (inputText = text) => {
     try {

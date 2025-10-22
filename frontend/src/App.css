@@ -184,3 +184,40 @@ footer {
   opacity: 0.8;
   color: inherit;
 }
+
+/* Translated Text Heading */
+.output-section label {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #00c6ff; /* base tech blue */
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 6px rgba(0, 198, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.output-section label:hover {
+  text-shadow: 0 4px 12px rgba(0, 198, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+/* Optional: subtle animation on load */
+.output-section label {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.8s forwards 0.4s;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

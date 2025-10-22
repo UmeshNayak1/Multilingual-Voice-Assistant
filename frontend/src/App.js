@@ -6,8 +6,10 @@ function App() {
   const [translatedText, setTranslatedText] = useState("");
   const [language, setLanguage] = useState("fr");
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    setTimeout(() => setIsLoaded(true), 300); // trigger entrance animation
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
       setIsDarkMode(savedTheme === "dark");
@@ -85,30 +87,15 @@ function App() {
   };
 
   return (
-    <div className={`App ${isDarkMode ? "dark" : "light"}`}>
+    <div className={`App ${isDarkMode ? "dark" : "light"} ${isLoaded ? "loaded" : ""}`}>
+      <div className="animated-bg"></div>
+
       {/* Theme Toggle */}
-      <button
-        onClick={toggleTheme}
-        style={{
-          position: "absolute",
-          top: "20px",
-          right: "20px",
-          width: "48px",
-          height: "48px",
-          borderRadius: "50%",
-          backgroundColor: isDarkMode ? "#475569" : "#1a73e8",
-          color: "#fff",
-          border: "none",
-          fontSize: "1.3rem",
-          cursor: "pointer",
-          boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
-          transition: "all 0.3s ease",
-        }}
-      >
+      <button className="theme-toggle" onClick={toggleTheme}>
         {isDarkMode ? "☀️" : "🌙"}
       </button>
 
-      <h1>🎙️ Multilingual Voice Assistant</h1>
+      <h1 className="app-title">🎙️ Multilingual Voice Assistant</h1>
 
       <textarea
         rows="4"
@@ -120,7 +107,7 @@ function App() {
       <div className="button-group">
         <button onClick={handleVoiceInput}>🎤 Speak</button>
         <button onClick={() => speakText(text)}>🔊 Speak Text</button>
-        <button onClick={() => copyToClipboard(text)}>📋 Copy Text</button>
+        <button onClick={() => copyToClipboard(text)}>📋 Copy</button>
         <button onClick={handleClearText}>🧹 Clear</button>
       </div>
 
@@ -137,28 +124,18 @@ function App() {
           <option value="hi">Hindi 🇮🇳</option>
           <option value="zh-cn">Chinese 🇨🇳</option>
         </select>
-
         <button onClick={() => handleTranslate()}>🚀 Translate</button>
       </div>
 
-      <div className="output-section">
+      <div className="output-section fade-in">
         <label htmlFor="translatedText">📝 Translated Text</label>
-        <textarea
-          id="translatedText"
-          rows="4"
-          value={translatedText}
-          readOnly
-        />
+        <textarea id="translatedText" rows="4" value={translatedText} readOnly />
       </div>
 
       {translatedText && (
-        <div className="button-group">
-          <button onClick={() => speakText(translatedText)}>
-            🔊 Speak Translation
-          </button>
-          <button onClick={() => copyToClipboard(translatedText)}>
-            📋 Copy Translation
-          </button>
+        <div className="button-group fade-in">
+          <button onClick={() => speakText(translatedText)}>🔊 Speak Translation</button>
+          <button onClick={() => copyToClipboard(translatedText)}>📋 Copy Translation</button>
         </div>
       )}
 

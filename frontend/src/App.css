@@ -8,13 +8,13 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Dark professional */
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   background-size: 400% 400%;
   animation: gradientShift 12s ease infinite;
 }
 
 .App.light .bg-gradient {
-  background: linear-gradient(135deg, #e0f7fa, #b2ebf2, #80deea); /* Light tech blue */
+  background: linear-gradient(135deg, #e0f7fa, #b2ebf2, #80deea);
 }
 
 @keyframes gradientShift {
@@ -155,6 +155,58 @@ select {
   margin-top: 25px;
 }
 
+.output-section label {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 6px rgba(0, 198, 255, 0.5);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.8s forwards 0.4s;
+}
+
+.output-section label:hover {
+  text-shadow: 0 4px 12px rgba(0, 198, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button group for output */
+.output-section .button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.output-section .button-group button {
+  margin: 8px 6px;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.6s forwards 0.3s;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
 /* --------------------------
    📱 Responsive
 --------------------------- */
@@ -173,6 +225,16 @@ select {
   .app-title {
     font-size: 1.8rem;
   }
+
+  .output-section .button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .output-section .button-group button {
+    width: 90%;
+    margin: 6px 0;
+  }
 }
 
 /* --------------------------
@@ -183,41 +245,4 @@ footer {
   font-size: 0.9rem;
   opacity: 0.8;
   color: inherit;
-}
-
-/* Translated Text Heading */
-.output-section label {
-  display: block;
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: #00c6ff; /* base tech blue */
-  background: linear-gradient(90deg, #00c6ff, #0072ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 2px 6px rgba(0, 198, 255, 0.5);
-  transition: all 0.3s ease;
-}
-
-.output-section label:hover {
-  text-shadow: 0 4px 12px rgba(0, 198, 255, 0.8);
-  transform: translateY(-2px);
-}
-
-/* Optional: subtle animation on load */
-.output-section label {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeInUp 0.8s forwards 0.4s;
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }

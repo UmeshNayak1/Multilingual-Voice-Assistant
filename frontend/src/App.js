@@ -11,9 +11,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => setIsLoaded(true), 300);
     const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setIsDarkMode(savedTheme === "dark");
-    }
+    if (savedTheme) setIsDarkMode(savedTheme === "dark");
   }, []);
 
   const handleTranslate = async (inputText = text) => {
@@ -26,7 +24,6 @@ function App() {
           body: JSON.stringify({ text: inputText, dest: language }),
         }
       );
-
       const data = await response.json();
       setTranslatedText(data.translated_text || data.error);
       speakText(data.translated_text);

@@ -9,7 +9,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setIsLoaded(true), 300); // trigger entrance animation
+    setTimeout(() => setIsLoaded(true), 300);
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
       setIsDarkMode(savedTheme === "dark");
@@ -87,10 +87,13 @@ function App() {
   };
 
   return (
-    <div className={`App ${isDarkMode ? "dark" : "light"} ${isLoaded ? "loaded" : ""}`}>
-      <div className="animated-bg"></div>
+    <div
+      className={`App ${isDarkMode ? "dark" : "light"} ${
+        isLoaded ? "loaded" : ""
+      }`}
+    >
+      <div className="bg-gradient"></div>
 
-      {/* Theme Toggle */}
       <button className="theme-toggle" onClick={toggleTheme}>
         {isDarkMode ? "☀️" : "🌙"}
       </button>
@@ -112,7 +115,7 @@ function App() {
       </div>
 
       <div className="language-select">
-        <label htmlFor="language">🌐 Select Language:</label>
+        <label htmlFor="language">🌐 Translate To:</label>
         <select
           id="language"
           value={language}
@@ -127,20 +130,29 @@ function App() {
         <button onClick={() => handleTranslate()}>🚀 Translate</button>
       </div>
 
-      <div className="output-section fade-in">
+      <div className="output-section">
         <label htmlFor="translatedText">📝 Translated Text</label>
-        <textarea id="translatedText" rows="4" value={translatedText} readOnly />
+        <textarea
+          id="translatedText"
+          rows="4"
+          value={translatedText}
+          readOnly
+        />
       </div>
 
       {translatedText && (
         <div className="button-group fade-in">
-          <button onClick={() => speakText(translatedText)}>🔊 Speak Translation</button>
-          <button onClick={() => copyToClipboard(translatedText)}>📋 Copy Translation</button>
+          <button onClick={() => speakText(translatedText)}>
+            🔊 Speak Translation
+          </button>
+          <button onClick={() => copyToClipboard(translatedText)}>
+            📋 Copy Translation
+          </button>
         </div>
       )}
 
       <footer>
-        🌐 Built by <b>Umesh Nayak</b> | Powered by AI Translation
+        🌐 Built with ❤️ by <b>Umesh Nayak</b>
       </footer>
     </div>
   );

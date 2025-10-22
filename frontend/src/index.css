@@ -1,13 +1,126 @@
-body {
+/* --------------------------
+   🔹 Global Reset & Font
+--------------------------- */
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background 0.5s ease, color 0.5s ease;
+  overflow-x: hidden;
+}
+
+/* --------------------------
+   🔹 Base Body Background
+--------------------------- */
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Dark tech */
+  color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+body.light {
+  background: linear-gradient(135deg, #e0f7fa, #b2ebf2, #80deea); /* Light tech blue */
+  color: #222;
+}
+
+/* --------------------------
+   🔹 Code Styling
+--------------------------- */
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+/* --------------------------
+   🔹 Animated Gradient Background Overlay
+--------------------------- */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, #00c6ff, #0072ff, #7b1fa2, #512da8);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  z-index: -1;
+  opacity: 0.4;
+  border-radius: 50%;
+}
+
+body.light::before {
+  background: linear-gradient(45deg, #80deea, #4dd0e1, #26c6da, #00acc1);
+  opacity: 0.25;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --------------------------
+   🔹 Floating Particle Effects
+--------------------------- */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: floatParticles 60s linear infinite;
+  z-index: -2;
+}
+
+@keyframes floatParticles {
+  0% { transform: translate(0,0) rotate(0deg); }
+  100% { transform: translate(-50px,50px) rotate(360deg); }
+}
+
+/* --------------------------
+   🔹 Smooth Scroll & Transitions
+--------------------------- */
+body, #root {
+  scroll-behavior: smooth;
+  transition: all 0.3s ease;
+}
+
+/* --------------------------
+   🔹 Selection Styling
+--------------------------- */
+::selection {
+  background: #00c6ff;
+  color: #fff;
+}
+
+/* --------------------------
+   🔹 Responsive Root Container
+--------------------------- */
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }

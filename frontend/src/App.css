@@ -1,204 +1,201 @@
-/* 🌈 Animated Gradient Background */
-.animated-bg {
+/* --------------------------
+   🌈 Adaptive Animated Background
+--------------------------- */
+.bg-gradient {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(-45deg, #1a73e8, #00bcd4, #8e24aa, #ff6f00);
-  background-size: 400% 400%;
-  animation: gradientMove 12s ease infinite;
   z-index: -1;
-  filter: blur(60px);
+  background: linear-gradient(135deg, #6ec1e4, #f5af19, #ff5858, #8e24aa);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
 }
 
-@keyframes gradientMove {
+.App.dark .bg-gradient {
+  background: linear-gradient(135deg, #141e30, #243b55, #1a1a2e, #16213e);
+}
+
+@keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* 🌐 Body */
-body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  overflow-x: hidden;
-}
-
-/* 💎 Main Container */
+/* --------------------------
+   🧊 App Container (Glassmorphism)
+--------------------------- */
 .App {
-  max-width: 800px;
+  max-width: 850px;
   margin: 80px auto;
-  padding: 50px;
-  border-radius: 25px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+  padding: 40px;
+  border-radius: 24px;
+  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
   text-align: center;
-  color: #fff;
+  transform: translateY(30px);
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition: all 1s ease;
 }
 
 .App.loaded {
-  opacity: 1;
   transform: translateY(0);
+  opacity: 1;
 }
 
-/* 🌞 Light Mode */
-.App.light {
-  color: #111;
-}
-
-/* 🌙 Dark Mode */
 .App.dark {
-  color: #fff;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.35);
+  color: #f0f0f0;
 }
 
-/* ✨ Animated Title */
+/* --------------------------
+   🌟 Title
+--------------------------- */
 .app-title {
-  font-size: 2.4rem;
-  background: linear-gradient(90deg, #42a5f5, #ff6f00, #8e24aa);
+  font-size: 2.3rem;
+  margin-bottom: 25px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shine 6s linear infinite;
+  animation: titleGlow 3s ease-in-out infinite alternate;
 }
 
-@keyframes shine {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+@keyframes titleGlow {
+  0% { text-shadow: 0 0 8px rgba(0, 183, 255, 0.4); }
+  100% { text-shadow: 0 0 20px rgba(0, 183, 255, 0.9); }
 }
 
-/* 📝 Textarea */
+/* --------------------------
+   ✍️ Textareas
+--------------------------- */
 textarea {
   width: 100%;
+  border-radius: 14px;
   padding: 14px;
-  font-size: 1rem;
   border: none;
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  outline: none;
-  transition: all 0.4s ease;
+  background: rgba(255, 255, 255, 0.35);
+  color: #222;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
   resize: vertical;
 }
 
-textarea:hover,
-textarea:focus {
-  background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.02);
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+.App.dark textarea {
+  background: rgba(30, 30, 30, 0.6);
+  color: #fff;
+  box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.1);
 }
 
-/* 🎛 Buttons */
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 114, 255, 0.5);
+  transform: scale(1.02);
+}
+
+/* --------------------------
+   🔘 Buttons
+--------------------------- */
 button {
   border: none;
-  border-radius: 50px;
-  padding: 12px 20px;
+  border-radius: 30px;
+  padding: 12px 22px;
   margin: 6px;
   font-size: 1rem;
   font-weight: 600;
-  cursor: pointer;
-  background: linear-gradient(90deg, #42a5f5, #1a73e8);
   color: #fff;
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
   transition: all 0.3s ease;
+  cursor: pointer;
   position: relative;
   overflow: hidden;
 }
 
 button:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 0 15px rgba(26, 115, 232, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(0, 183, 255, 0.6);
 }
 
-/* Ripple Effect */
-button::after {
-  content: "";
-  position: absolute;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 50%;
-  transform: scale(0);
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: transform 0.5s, opacity 1s;
-}
-button:active::after {
-  transform: scale(2);
-  opacity: 1;
+.App.dark button {
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
 }
 
 /* Theme Toggle */
 .theme-toggle {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  background: rgba(255, 255, 255, 0.2);
+  top: 25px;
+  right: 25px;
+  width: 45px;
+  height: 45px;
+  font-size: 1.4rem;
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(10px);
-}
-
-/* 🌈 Select + Label */
-.language-select {
-  margin-top: 30px;
-}
-
-label {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-right: 10px;
-}
-
-select {
-  padding: 10px 16px;
-  border: none;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  cursor: pointer;
+  border-radius: 50%;
   transition: all 0.3s ease;
 }
 
-select:hover {
-  background: rgba(255, 255, 255, 0.3);
+.theme-toggle:hover {
+  transform: rotate(20deg);
 }
 
-/* 🧊 Output Section */
+/* --------------------------
+   🌐 Language Selector
+--------------------------- */
+.language-select {
+  margin-top: 25px;
+}
+
+select {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.35);
+  color: #111;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.App.dark select {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+/* --------------------------
+   💫 Output Section
+--------------------------- */
 .output-section {
   margin-top: 25px;
 }
 
-.fade-in {
-  animation: fadeInUp 1s ease forwards;
-}
-
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(25px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* 📱 Responsive */
+/* --------------------------
+   📱 Responsive
+--------------------------- */
 @media (max-width: 768px) {
   .App {
     width: 90%;
-    padding: 30px;
+    padding: 25px;
   }
-  button, select {
+
+  button,
+  select {
     width: 100%;
+    margin: 8px 0;
   }
+
   .app-title {
     font-size: 1.8rem;
   }
 }
 
-/* Footer */
+/* --------------------------
+   🦶 Footer
+--------------------------- */
 footer {
-  margin-top: 30px;
+  margin-top: 40px;
   font-size: 0.9rem;
   opacity: 0.8;
+  color: inherit;
 }

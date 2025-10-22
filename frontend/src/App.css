@@ -1,103 +1,98 @@
-/* 🌞 Light Mode */
-.App.light {
-  background: linear-gradient(135deg, #e3f2fd, #ffffff);
-  color: #000;
-  transition: all 0.5s ease-in-out;
+/* 🌈 Animated Gradient Background */
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, #1a73e8, #00bcd4, #8e24aa, #ff6f00);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+  z-index: -1;
+  filter: blur(60px);
 }
 
-.App.light button {
-  background: linear-gradient(90deg, #1a73e8, #42a5f5);
-  color: #fff;
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.App.light textarea {
-  background-color: #fff;
-  color: #000;
-}
-
-/* 🌚 Dark Mode */
-.App.dark {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: #f5f5f5;
-  transition: all 0.5s ease-in-out;
-}
-
-.App.dark button {
-  background: linear-gradient(90deg, #334155, #475569);
-  color: #f0f0f0;
-}
-
-.App.dark textarea {
-  background-color: #1e293b;
-  color: #f0f0f0;
-}
-
-/* 🌐 General Body */
+/* 🌐 Body */
 body {
   margin: 0;
-  padding: 0;
-  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f7fa;
-  color: #333;
+  font-family: "Poppins", sans-serif;
   overflow-x: hidden;
 }
 
-/* 🧊 App Container */
+/* 💎 Main Container */
 .App {
   max-width: 800px;
-  margin: 60px auto;
-  padding: 40px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  margin: 80px auto;
+  padding: 50px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
   text-align: center;
-  transition: all 0.4s ease-in-out;
-  position: relative;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
-/* 💫 Heading */
-h1 {
-  font-size: 2.2rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #1a73e8, #00bcd4);
+.App.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 🌞 Light Mode */
+.App.light {
+  color: #111;
+}
+
+/* 🌙 Dark Mode */
+.App.dark {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* ✨ Animated Title */
+.app-title {
+  font-size: 2.4rem;
+  background: linear-gradient(90deg, #42a5f5, #ff6f00, #8e24aa);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 24px;
-  letter-spacing: 0.5px;
+  animation: shine 6s linear infinite;
 }
 
-/* 📝 Textarea Styling */
+@keyframes shine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* 📝 Textarea */
 textarea {
   width: 100%;
   padding: 14px;
   font-size: 1rem;
-  border: 2px solid transparent;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(4px);
-  resize: vertical;
-  transition: all 0.3s ease-in-out;
-  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-textarea:hover {
-  border-color: #1a73e8;
-}
-
-textarea:focus {
-  border-color: #2196f3;
-  box-shadow: 0 0 10px rgba(33, 150, 243, 0.4);
+  border: none;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
   outline: none;
+  transition: all 0.4s ease;
+  resize: vertical;
 }
 
-/* 🧠 Readonly Textarea (Translated Text) */
-textarea[readonly] {
-  background-color: rgba(245, 247, 250, 0.8);
-  cursor: not-allowed;
+textarea:hover,
+textarea:focus {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.02);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
 }
 
-/* 🎛️ Buttons */
+/* 🎛 Buttons */
 button {
   border: none;
   border-radius: 50px;
@@ -106,101 +101,104 @@ button {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  background: linear-gradient(90deg, #42a5f5, #1a73e8);
+  color: #fff;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
+  position: relative;
+  overflow: hidden;
 }
 
 button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(26, 115, 232, 0.4);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 15px rgba(26, 115, 232, 0.5);
 }
 
-button:active {
-  transform: scale(0.97);
+/* Ripple Effect */
+button::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  transform: scale(0);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: transform 0.5s, opacity 1s;
+}
+button:active::after {
+  transform: scale(2);
+  opacity: 1;
 }
 
-/* 🌈 Select Dropdown */
+/* Theme Toggle */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+/* 🌈 Select + Label */
+.language-select {
+  margin-top: 30px;
+}
+
 label {
-  font-weight: 700;
   font-size: 1.2rem;
-  background: linear-gradient(90deg, #0453f0, #00bcd4);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-weight: bold;
   margin-right: 10px;
 }
 
 select {
   padding: 10px 16px;
-  border: 2px solid #1a73e8;
+  border: none;
   border-radius: 10px;
-  font-size: 1rem;
-  background-color: #ffffff;
-  color: #333;
-  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
   cursor: pointer;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 select:hover {
-  background-color: #e3f2fd;
-  border-color: #2196f3;
+  background: rgba(255, 255, 255, 0.3);
 }
 
-select:focus {
-  outline: none;
-  box-shadow: 0 0 6px rgba(33, 150, 243, 0.5);
-}
-
-/* Layout helpers */
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.language-select {
+/* 🧊 Output Section */
+.output-section {
   margin-top: 25px;
 }
 
-.output-section {
-  margin-top: 30px;
+.fade-in {
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(25px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 /* 📱 Responsive */
 @media (max-width: 768px) {
   .App {
     width: 90%;
-    padding: 25px;
+    padding: 30px;
   }
-
-  h1 {
-    font-size: 1.8rem;
-  }
-
-  textarea {
-    font-size: 0.95rem;
-  }
-
-  button,
-  select {
+  button, select {
     width: 100%;
-    margin: 8px 0;
   }
-
-  label {
-    display: block;
-    margin-bottom: 10px;
+  .app-title {
+    font-size: 1.8rem;
   }
 }
 
-/* ✨ Smooth Theme Animation */
-.App {
-  transition: background 0.6s ease, color 0.3s ease;
+/* Footer */
+footer {
+  margin-top: 30px;
+  font-size: 0.9rem;
+  opacity: 0.8;
 }
